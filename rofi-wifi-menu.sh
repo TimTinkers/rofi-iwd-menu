@@ -68,7 +68,7 @@ elif [ "$LINE_COUNT" -gt 8 ] || [[ "$CON_STATE" =~ "disconnected" ]]; then
 fi
 
 ## Grab the user's chosen SSID entry.
-CHENTRY=$(echo -e "$MENU" | uniq -u | rofi -dmenu -p "WiFi SSID: " -lines "$LINE_COUNT" -a "$HIGHLINE" -location "$POSITION" -yoffset "$Y_OFF" -xoffset "$X_OFF" -font "$FONT" -width -"$R_WIDTH")
+CHENTRY=$(echo -e "$MENU" | uniq -u | rofi -dmenu -p "WiFi SSID" -lines "$LINE_COUNT" -a "$HIGHLINE" -location "$POSITION" -yoffset "$Y_OFF" -xoffset "$X_OFF" -font "$FONT" -width -"$R_WIDTH")
 CHSSID=$(echo "$CHENTRY" | sed  's/\s\{2,\}/\|/g' | awk -F "|" '{print $1}')
 
 ## Support manual SSID entry.
