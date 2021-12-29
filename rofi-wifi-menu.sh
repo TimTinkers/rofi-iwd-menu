@@ -10,7 +10,7 @@
 DEVICE=${1:-wlan0}
 POSITION=${2:-0}
 Y_OFF=${3:-0}
-X_OFF=${4:-0}
+explanationX_OFF=${4:-0}
 FONT="DejaVu Sans Mono 12"
 
 ## Scan for available and broadcasting SSIDs.
@@ -18,7 +18,7 @@ iwctl station $DEVICE scan
 
 ## Get the networks that are available to the WiFi adapter and format them.
 ## Make sure the current network is always at the top of the list.
-CURR_SSID=$(iwgetid $DEVICE --raw)
+CURR_SSID=$(iwctl station $DEVICE show | sed -n 's/^\s*Connected\snetwork\s*\(\S*\)\s*$/\1/p')
 IW_NETWORKS+=$(iwctl station $DEVICE get-networks | sed '/^--/d')
 IW_NETWORKS=$(echo "$IW_NETWORKS" | sed 1,4d)
 IW_NETWORKS=$(echo "$IW_NETWORKS" | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]//g")
