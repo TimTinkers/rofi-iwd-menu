@@ -10,7 +10,7 @@
 DEVICE=${1:-wlan0}
 POSITION=${2:-0}
 Y_OFF=${3:-0}
-explanationX_OFF=${4:-0}
+X_OFF=${4:-0}
 FONT="DejaVu Sans Mono 12"
 
 ## Scan for available and broadcasting SSIDs.
